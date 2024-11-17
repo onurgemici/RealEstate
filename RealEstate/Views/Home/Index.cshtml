@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<partial name="_SearchFormPartial" model="new SearchViewModel()" />
+
+
+
+
+<h2 class="border-bottom">Son Eklenenler</h2>
+<partial name="_PostListPartial" model="ViewBag.Latest" />

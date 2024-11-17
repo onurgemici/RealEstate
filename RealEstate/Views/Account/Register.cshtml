@@ -1,0 +1,75 @@
+﻿@model RegisterViewModel
+
+@{
+    Layout = "_AccountLayout";
+    ViewData["Title"] = "Yeni Üyelik";
+}
+
+
+
+<form method="post" class="h-100">
+    <div class="h-100 d-flex flex-column justify-content-center align-items-center">
+        <div class="card shadow-sm" style="min-width: 24rem;">
+            <div class="card-body">
+                <div class="d-flex flex-column gap-3 justify-content-center align-items-center">
+                    <h3>Üye Ol</h3>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="UserName"></label>
+                    <input asp-for="UserName" class="form-control" placeholder="e-posta adresinizi yazınız..." />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" placeholder="ad ve soyadınızı yazınız..." />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" placeholder="parolarınızı yazınız..." />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PasswordCheck"></label>
+                    <input asp-for="PasswordCheck" class="form-control" placeholder="parolanızı tekrar yazınız..." />
+                    <span asp-validation-for="PasswordCheck" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber"></label>
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="telefon numaranızı yazınız..." />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <hr />
+                <div class="py-3 d-flex gap-3 justify-content-center">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ChangePassword">Zaten Üye misiniz? Giriş Yapın</a>
+
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Kaydol</button>
+
+                </div>
+
+            </div>
+            @if (!ViewContext.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    <div asp-validation-summary="All"></div>
+                </div>
+            }
+
+        </div>
+        <div class="small py-3 text-light">
+            @DateTime.Today.Year &copy; - Tüm hakları saklıdır. - Powered By RealEstate&trade;
+        </div>
+        <div>
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Anasayfaya Geri Dön</a>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

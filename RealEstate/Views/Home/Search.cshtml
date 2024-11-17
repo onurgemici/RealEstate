@@ -1,0 +1,14 @@
+﻿@using RealEstateData
+@model IEnumerable<Post>
+@{
+    ViewData["Title"] = "Arama Sonuçları";
+}
+
+<h2>@ViewData["Title"]</h2>
+<partial name="_SearchFormPartial" model="ViewBag.SearchModel" />
+
+<partial name="_PostListPartial" model="Model" />
+
+
+
+

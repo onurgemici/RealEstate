@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Kategori Listesi";
+
+}
+<h2>@ViewData["Title"]</h2>
+
+<div class="d-flex py-2">
+    <a asp-action="Create" class="btn btn-primary ms-auto">
+        <i class="bi bi-plus"></i>
+        Yeni Kayıt
+    </a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Kategori Adı</th>
+            <th class="col-1">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td class="text-nowrap">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger remove-btn">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+
+        $(() => {
+            $('.remove-btn').on('click', (e) => {
+                let url = $(e.currentTarget).attr('href');
+                Swal
+                    .fire({
+                        title: 'UYARI!',
+                        icon: 'warning',
+                        html: 'Bu kayıt <b>TAMAMEN</b> silinecektir.<br />Devam etmek ister misiniz?',
+                        showCancelButton: true,
+                        cancelButtonText: 'İptal',
+                        confirmButtonText: 'SİL',
+                        heightAuto: false
+                    })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = url;
+                        }
+                    });
+                return false;
+            });
+        });
+
+
+    </script>
+}

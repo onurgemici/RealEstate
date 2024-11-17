@@ -1,0 +1,30 @@
+﻿@using RealEstateData
+@model SearchViewModel
+    <div class="form-panel d-flex align-items-center justify-content-center rounded-3 mb-4">
+        <div class="p-3 bg-opacity-50 bg-white rounded d-flex">
+            <form method="get" asp-action="Search">
+                <div class="d-flex justify-content-between gap-2">
+                    <div class="">
+                        <select class="form-select" asp-for="DistrictId" asp-items="ViewBag.Districts" placeholder="İl / İlçe"></select>
+                    </div>
+                    <div class="">
+                        <input class="form-control" asp-for="MinPrice" placeholder="En Düşük" />
+                    </div>
+                    <div class="">
+                        <input class="form-control" asp-for="MaxPrice" placeholder="En Yüksek" />
+                    </div>
+                    <div class="">
+                        <select class="form-select" asp-for="CategoryId" asp-items="ViewBag.Categories" placeholder="Tür"></select>
+                    </div>
+                    <div class="">
+                        <select class="form-select" asp-for="PostType" asp-items="@Html.GetEnumSelectList<PostTypes>()" placeholder="Tür"></select>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-search"></i> Ara
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

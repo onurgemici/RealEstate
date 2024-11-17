@@ -1,0 +1,106 @@
+﻿@model RealEstate.Models.PostViewModel
+
+
+<div class="container mt-5" style="max-width: 1200px; padding: 0 15px;">
+    <!-- Arka Plan Kutu -->
+    <div class="card shadow-lg p-4 mb-4" style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="row">
+
+<div class="mb-4 p-4 rounded" style="background-color: #e3f2fd; border: 1px solid #ddd; word-wrap: break-word;">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <p class="text-center" style="font-size: 1.1rem; color: #555;">
+            <strong>İlan Sahibi:</strong> @Model.UserName
+        </p>
+        <p class="text-center" style="font-size: 1.1rem; color: #555;">
+            <strong>Telefon:</strong>
+            <a href="tel:@Model.PhoneNumber" class="text-primary text-decoration-none">
+                            @Model.PhoneNumber
+            </a>
+        </p>
+    </div>
+</div>
+            <div class="col-md-8 mx-auto">
+                <!-- Ürün Başlığı -->
+                <h1 class="display-4 text-center mb-4" style="font-size: 2.5rem; font-weight: bold; color: #333; margin-bottom: 1rem;">
+                    @Model.Name
+                </h1>
+
+                <!-- Görsel -->
+                <div class="text-center mb-4" style="box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden;">
+                    <img src="@Model.Image" alt="@Model.Name" class="img-fluid" style="max-height: 400px; object-fit: cover; width: 100%;" />
+                </div>
+
+                <!-- Kategori ve İl/İlçe -->
+                <div class="row mb-3" style="margin-left: 0; margin-right: 0;">
+                    <div class="col" style="padding-left: 0; padding-right: 15px;">
+                        <p style="font-size: 1rem; color: #555;">
+                            <strong style="color: #000;">Kategori:</strong> @Model.CategoryName
+                        </p>
+                    </div>
+                    <div class="col" style="padding-left: 15px; padding-right: 0;">
+                        <p style="font-size: 1rem; color: #555;">
+                            <strong style="color: #000;">İl/İlçe:</strong> @Model.ProvinceName / @Model.DistrictName
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Fiyat ve Açıklama -->
+                <div class="mb-4" style="border-top: 1px solid #ddd; padding-top: 20px;">
+                    <p class="h5" style="font-size: 1.3rem; font-weight: 600; color: #28a745; margin-bottom: 1rem;">
+                        <strong>Fiyat:</strong> @Model.Price.ToString("c0")
+                    </p>
+                    <p style="font-size: 1.1rem; color: #555;">
+                        <strong>Açıklama:</strong> @Model.Descriptions
+                    </p>
+                </div>
+
+                <!-- İlan Türü ve Özellikler -->
+                <div class="mb-4" style="border-top: 1px solid #ddd; padding-top: 20px;">
+                    <p style="font-size: 1.1rem; color: #555;">
+                        <strong>İlan Türü:</strong> @Model.Type
+                    </p>
+                    <p style="font-size: 1.1rem; color: #555;">
+                        <strong>Özellikler:</strong>
+                    </p>
+                    @if (Model.SpecificationNames.Any())
+                    {
+                        <ul class="list-group" style="margin-bottom: 1.5rem;">
+                            @foreach (var spec in Model.SpecificationNames)
+                            {
+                                <li class="list-group-item" style="background-color: #f8f9fa; border: 1px solid #ddd; margin-bottom: 0.5rem; padding: 12px 15px; font-size: 1.1rem;">
+                                    @spec
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p style="font-size: 1.1rem; color: #555;">Özellik bulunmamaktadır.</p>
+                    }
+                </div>
+
+                <!-- Koordinatlar ve Tarih -->
+                <div class="row mb-4" style="margin-left: 0; margin-right: 0;">
+                    <div class="col" style="padding-left: 0; padding-right: 15px;">
+                        <p style="font-size: 1.1rem; color: #555;">
+                            <strong style="color: #000;">Tarih:</strong> @Model.Date.ToString("dd/MM/yyyy")
+                        </p>
+                    </div>
+                    <div class="col" style="padding-left: 15px; padding-right: 0;">
+                        <p style="font-size: 1.1rem; color: #555;">
+                            <strong style="color: #000;">Koordinatlar:</strong> @Model.Latitude, @Model.Longitude
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Geri Dön Butonu -->
+                <div class="text-center mt-5" style="padding-bottom: 30px;">
+                    <a href="javascript:window.history.back();" class="btn btn-secondary btn-lg" style="font-size: 1.1rem; padding: 12px 30px; border-radius: 5px; font-weight: bold;">
+                        Geri Dön
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Kategori Düzenleme";
+
+}
+<h2>@ViewData["Title"]</h2>
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label" asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <hr />
+    <button type="submit" class="btn btn-success">
+        <i class="bi bi-save"></i>
+        Kaydet
+    </button>
+    <a class="btn btn-link" asp-action="Index">İptal</a>
+</form>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

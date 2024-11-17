@@ -1,0 +1,9 @@
+﻿@using RealEstateData
+@model IEnumerable<Post>
+
+<div class="row row-cols-1 row-cols-lg-4">
+    @foreach (var post in Model)
+    {
+        <partial name="_PostBoxPartial" model="post" />
+    }
+</div>

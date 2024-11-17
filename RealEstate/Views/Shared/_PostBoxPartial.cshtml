@@ -1,0 +1,15 @@
+﻿@using RealEstateData
+@model Post
+<div class="col">
+    <div class="card h-100">
+        <a asp-action="Post" asp-route-id="@Model.Id">
+            <img src="@Model.Image" class="card-img-top" alt="@Model.Name" />
+            <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Price.ToString("c0")</p>
+            </div>
+        </a>
+       
+      
+    </div>
+</div>
